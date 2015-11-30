@@ -34,6 +34,10 @@ else
   end
 end
 
+node['thrift']['additional_packages'].each do |pkg|
+  package pkg
+end
+
 remote_file "#{Chef::Config[:file_cache_path]}/thrift-#{version}.tar.gz" do
   source "#{node['thrift']['mirror']}/thrift/#{version}/thrift-#{version}.tar.gz"
   checksum node['thrift']['checksum']
